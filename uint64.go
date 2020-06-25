@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// ToUInt64E Cast input to uint64
+// Uint64E Cast input to uint64
 func Uint64E(input interface{}) (output uint64, err error) {
 	switch v := input.(type) {
 	case string:
@@ -93,7 +93,7 @@ func Uint64E(input interface{}) (output uint64, err error) {
 	return
 }
 
-// ToUint64 cast input to uint64 and return default value if error
+// Uint64 cast input to uint64 and return default value if error
 func Uint64(input interface{}) uint64 {
 	o, _ := Uint64E(input)
 	return o
