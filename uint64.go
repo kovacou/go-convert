@@ -6,95 +6,77 @@ import (
 )
 
 // Uint64E Cast input to uint64
-func Uint64E(input interface{}) (output uint64, err error) {
-	switch v := input.(type) {
+func Uint64E(v interface{}) (o uint64, err error) {
+	switch val := v.(type) {
 	case string:
-		output, err = strconv.ParseUint(v, 10, 64)
-		return
+		o, err = strconv.ParseUint(val, 10, 64)
 	case []byte:
-		output, err = strconv.ParseUint(string(v), 10, 64)
-		return
+		o, err = strconv.ParseUint(string(val), 10, 64)
 	case int:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case int8:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case int16:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case int32:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case int64:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case uint:
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case uint8:
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case uint16:
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case uint32:
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case uint64:
-		output = v
-		return
+		o = val
 	case float32:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case float64:
-		if v < 0 {
+		if val < 0 {
 			err = errors.New("could not convert negative value to uint64")
 			return
 		}
-		output = uint64(v)
-		return
+		o = uint64(val)
 	case bool:
-		output = uint64(0)
-		if v {
-			output = uint64(1)
+		if o = 0; val {
+			o = 1
 		}
-		return
 	case nil:
-		output = uint64(0)
-		return
 	default:
-		err = errors.New("could not convert to uint")
+		err = errors.New("could not convert to uint64")
 	}
 	return
 }
 
-// Uint64 cast input to uint64 and return default value if error
-func Uint64(input interface{}) uint64 {
-	o, _ := Uint64E(input)
+// Uint64 cast v to uint64 and return default value if there is any error.
+func Uint64(v interface{}) uint64 {
+	o, _ := Uint64E(v)
 	return o
 }

@@ -28,53 +28,37 @@ func SnakeCase(in string) string {
 func StringE(input interface{}) (output string, err error) {
 	switch v := input.(type) {
 	case string:
-		output = string(v)
-		return
+		output = v
 	case []byte:
 		output = string(v)
-		return
 	case int:
 		output = strconv.Itoa(v)
-		return
 	case int8:
 		output = strconv.Itoa(int(v))
-		return
 	case int16:
 		output = strconv.Itoa(int(v))
-		return
 	case int32:
 		output = strconv.Itoa(int(v))
-		return
 	case int64:
 		output = strconv.FormatInt(v, 10)
-		return
 	case uint:
 		output = strconv.FormatUint(uint64(v), 10)
-		return
 	case uint8:
 		output = strconv.FormatUint(uint64(v), 10)
-		return
 	case uint16:
 		output = strconv.FormatUint(uint64(v), 10)
-		return
 	case uint32:
 		output = strconv.FormatUint(uint64(v), 10)
-		return
 	case uint64:
-		output = strconv.FormatUint(uint64(v), 10)
-		return
+		output = strconv.FormatUint(v, 10)
 	case float32:
 		output = strconv.FormatFloat(float64(v), 'g', -1, 64)
-		return
 	case float64:
 		output = strconv.FormatFloat(v, 'g', -1, 64)
-		return
 	case nil:
 		output = ""
-		return
 	case bool:
 		output = strconv.FormatBool(v)
-		return
 	default:
 		err = errors.New("could not convert to string")
 	}
