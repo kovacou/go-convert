@@ -131,3 +131,43 @@ func Date(v interface{}) types.Date {
 	d, _ := DateE(v)
 	return d
 }
+
+// DateYearMonthE cast input to types.DateYearMonth and return the associated error.
+func DateYearMonthE(v interface{}) (d types.DateYearMonth, err error) {
+	switch val := v.(type) {
+	case time.Time:
+		d = types.NewDateYearMonth(val)
+	case *time.Time:
+		if val != nil {
+			d = types.NewDateYearMonth(*val)
+		}
+	case types.Date:
+		d = types.NewDateYearMonth(val.Time)
+	case *types.Date:
+		if val != nil {
+			d = types.NewDateYearMonth(val.Time)
+		}
+	case types.DateTime:
+		d = types.NewDateYearMonth(val.Time)
+	case *types.DateTime:
+		if val != nil {
+			d = types.NewDateYearMonth(val.Time)
+		}
+	case types.DateYearMonth:
+		d = val
+	case *types.DateYearMonth:
+		if val != nil {
+			d = types.NewDateYearMonth(val.Time)
+		}
+	default:
+		err = errors.New("could not convert to types.DateTime")
+	}
+
+	return
+}
+
+// DateYearMonth cast input to types.DateYearMonth and return default value if error.
+func DateYearMonth(v interface{}) types.DateYearMonth {
+	d, _ := DateYearMonthE(v)
+	return d
+}
