@@ -11,7 +11,7 @@ import (
 )
 
 // Float64E casts input to float64
-func Float64E(v interface{}) (o float64, err error) {
+func Float64E(v any) (o float64, err error) {
 	switch val := v.(type) {
 	case string:
 		o, err = strconv.ParseFloat(val, 64)
@@ -53,7 +53,7 @@ func Float64E(v interface{}) (o float64, err error) {
 }
 
 // Float64 cast v to float64 and return default value if there is any error.
-func Float64(v interface{}) float64 {
+func Float64(v any) float64 {
 	o, _ := Float64E(v)
 	return o
 }

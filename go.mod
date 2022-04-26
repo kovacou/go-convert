@@ -1,6 +1,6 @@
 module github.com/kovacou/go-convert
 
-go 1.17
+go 1.18
 
 require github.com/kovacou/go-types v0.0.4
 

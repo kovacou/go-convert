@@ -11,7 +11,7 @@ import (
 )
 
 // IntE cast input to int
-func IntE(input interface{}) (output int, err error) {
+func IntE(input any) (output int, err error) {
 	switch v := input.(type) {
 	case string:
 		var o int64
@@ -75,7 +75,7 @@ func IntE(input interface{}) (output int, err error) {
 }
 
 // Int cast i to int and return default value if error.
-func Int(i interface{}) int {
+func Int(i any) int {
 	o, _ := IntE(i)
 	return o
 }

@@ -13,7 +13,7 @@ import (
 )
 
 // TimeE cast input to time.Time and return the associated error.
-func TimeE(v interface{}) (t time.Time, err error) {
+func TimeE(v any) (t time.Time, err error) {
 	switch val := v.(type) {
 	case time.Time:
 		t = val
@@ -47,13 +47,13 @@ func TimeE(v interface{}) (t time.Time, err error) {
 }
 
 // Time cast input to time.Time and return default value if error.
-func Time(v interface{}) time.Time {
+func Time(v any) time.Time {
 	t, _ := TimeE(v)
 	return t
 }
 
 // DateTimeE cast input to types.DateTime and return the associated error.
-func DateTimeE(v interface{}) (dt types.DateTime, err error) {
+func DateTimeE(v any) (dt types.DateTime, err error) {
 	switch val := v.(type) {
 	case time.Time:
 		dt = types.NewDateTime(val)
@@ -87,13 +87,13 @@ func DateTimeE(v interface{}) (dt types.DateTime, err error) {
 }
 
 // DateTime cast input to types.DateTime and return default value if error.
-func DateTime(v interface{}) types.DateTime {
+func DateTime(v any) types.DateTime {
 	dt, _ := DateTimeE(v)
 	return dt
 }
 
 // DateE cast input to types.Date and return the associated error.
-func DateE(v interface{}) (d types.Date, err error) {
+func DateE(v any) (d types.Date, err error) {
 	switch val := v.(type) {
 	case time.Time:
 		d = types.NewDate(val)
@@ -127,13 +127,13 @@ func DateE(v interface{}) (d types.Date, err error) {
 }
 
 // Date cast input to types.Date and return default value if error.
-func Date(v interface{}) types.Date {
+func Date(v any) types.Date {
 	d, _ := DateE(v)
 	return d
 }
 
 // DateYearMonthE cast input to types.DateYearMonth and return the associated error.
-func DateYearMonthE(v interface{}) (d types.DateYearMonth, err error) {
+func DateYearMonthE(v any) (d types.DateYearMonth, err error) {
 	switch val := v.(type) {
 	case time.Time:
 		d = types.NewDateYearMonth(val)
@@ -167,7 +167,7 @@ func DateYearMonthE(v interface{}) (d types.DateYearMonth, err error) {
 }
 
 // DateYearMonth cast input to types.DateYearMonth and return default value if error.
-func DateYearMonth(v interface{}) types.DateYearMonth {
+func DateYearMonth(v any) types.DateYearMonth {
 	d, _ := DateYearMonthE(v)
 	return d
 }

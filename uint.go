@@ -11,7 +11,7 @@ import (
 )
 
 // Uint64E Cast input to uint64
-func UintE(v interface{}) (o uint, err error) {
+func UintE(v any) (o uint, err error) {
 	switch val := v.(type) {
 	case string:
 		v, err := strconv.ParseUint(val, 0, 0)
@@ -87,7 +87,7 @@ func UintE(v interface{}) (o uint, err error) {
 }
 
 // Uint cast v to uint64 and return default value if there is any error.
-func Uint(v interface{}) uint {
+func Uint(v any) uint {
 	o, _ := UintE(v)
 	return o
 }

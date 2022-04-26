@@ -25,7 +25,7 @@ func SnakeCase(in string) string {
 }
 
 // StringE cast input to string
-func StringE(input interface{}) (output string, err error) {
+func StringE(input any) (output string, err error) {
 	switch v := input.(type) {
 	case string:
 		output = v
@@ -66,7 +66,7 @@ func StringE(input interface{}) (output string, err error) {
 }
 
 // String cast input to string and return default value if error
-func String(input interface{}) string {
+func String(input any) string {
 	o, _ := StringE(input)
 	return o
 }
