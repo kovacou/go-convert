@@ -7,8 +7,8 @@ import (
 	"unicode"
 )
 
-// SnakeCase
-func SnakeCase(in string) string {
+// SnakeCaseWith
+func SnakeCaseWith(in string, sep rune) string {
 	runes := []rune(in)
 	b := strings.Builder{}
 	b.Grow(len(in))
@@ -16,12 +16,17 @@ func SnakeCase(in string) string {
 	for i, v := range runes {
 		if i+1 < len(in) && unicode.IsLower(v) && unicode.IsUpper(runes[i+1]) {
 			b.WriteRune(v)
-			b.WriteRune('_')
+			b.WriteRune(sep)
 		} else {
 			b.WriteRune(unicode.ToLower(v))
 		}
 	}
 	return b.String()
+}
+
+// SnakeCase
+func SnakeCase(in string) string {
+	return SnakeCaseWith(in, '_')
 }
 
 // StringE cast input to string
